@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Юридическая фирма «ПравоКом»</title>
+  <!-- Подключаемый CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Внутренний CSS -->
+  <style>
+    .slider {
+        text-align: center;
+        padding: 30px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        margin: 25px 0;
+        border-radius: 10px;
+        border-left: 5px solid #3498db;
+        position: relative;
+    }
+    
+    .slider-container {
+        position: relative;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .slide {
+        display: none;
+    }
+    
+    .slide.active {
+        display: block;
+        animation: fadeIn 0.8s ease-out;
+    }
+    
+    .slider-arrows {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+    
+    .arrow {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        border: 3px solid white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        pointer-events: auto;
+    }
+    
+    .arrow:hover {
+        background: linear-gradient(135deg, #3498db, #2980b9);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+    
+    .arrow.prev {
+        margin-left: -25px;
+    }
+    
+    .arrow.next {
+        margin-right: -25px;
+    }
+    
+    .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 25px;
+    }
+    
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #bdc3c7;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .dot.active {
+        background: #3498db;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    }
+    
+    .dot:hover {
+        background: #3498db;
+        transform: scale(1.3);
+    }
+    
+    .advantages-grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+    
+    .advantage-item {
+        width: 220px;
+        margin: 15px;
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .advantage-item:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        border-color: #3498db;
+    }
+    
+    .advantage-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+        transition: left 0.6s ease;
+    }
+    
+    .advantage-item:hover::before {
+        left: 100%;
+    }
+    
+    .specialization {
+        padding: 30px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        margin: 25px 0;
+        border-radius: 10px;
+        border-left: 5px solid #2c3e50;
+    }
+
+    .slide-image {
+        border: 3px solid #2c3e50;
+        border-radius: 10px;
+        margin: 20px 0;
+        transition: all 0.5s ease;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .slide-image:hover {
+        transform: scale(1.03);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        border-color: #3498db;
+    }
+
+    @keyframes titleGlow {
+        0% { text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+        50% { text-shadow: 0 0 15px rgba(52, 152, 219, 0.8); }
+        100% { text-shadow: 0 0 5px rgba(52, 152, 219, 0.5); }
+    }
+    
+    .glowing-title {
+        animation: titleGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .slide.active {
+        animation: slideIn 0.6s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Шапка с встроенными стилями -->
+  <header class="header-logo" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);">
+    <a href="index.html" class="logo-link" style="text-decoration: none;">
+      <img src="img/logo.png" alt="Логотип ПравоКом" class="logo-img" 
+           style="border: 4px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
+      <h1 class="logo-text" style="color: white; text-shadow: 3px 3px 6px rgba(0,0,0,0.5);">
+        Юридическая фирма «ПравоКом»
+      </h1>
+    </a>
+  </header>
+
+  <nav class="main-nav" style="background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.3); padding: 25px;">
+    <a href="index.html" class="nav-link" style="font-weight: bold; border: 2px solid #3498db; background: rgba(255,255,255,0.15);">Главная</a>
+    <a href="about.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">О нас</a>
+    <a href="services.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">Услуги</a>
+    <a href="contacts.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">Контакты</a>
+  </nav>
+
+  <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding: 25px;">
+    
+    <section class="slider fade-in">
+      <h2 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 15px; font-size: 32px;" class="glowing-title">
+        Наши успешные дела
+      </h2>
+      
+      <div class="slider-container">
+        <div class="slide active">
+          <img src="img/slide1.png" alt="Успешное дело №1" class="slide-image">
+          <h3 style="color: #2c3e50; font-size: 24px; margin: 20px 0;">Выигранный арбитражный спор на 5 млн BYN</h3>
+          <p style="line-height: 1.6; max-width: 700px; margin: 0 auto; font-size: 17px; color: #555;">
+            Представляли интересы крупной строительной компании в экономическом суде
+            Гомельской области по делу о взыскании задолженности за выполненные подрядные
+            работы. В ходе процесса удалось доказать необоснованность встречных требований
+            ответчика и подтвердить правомерность расчётов клиента.
+          </p>
+        </div>
+        
+        <div class="slide">
+          <img src="img/slide2.png" alt="Успешное дело №2" class="slide-image">
+          <h3 style="color: #2c3e50; font-size: 24px; margin: 20px 0;">Снятие необоснованных налоговых претензий</h3>
+          <p style="line-height: 1.6; max-width: 700px; margin: 0 auto; font-size: 17px; color: #555;">
+            Представляли интересы торгово-производственной компании в споре с инспекцией
+            Министерства по налогам и сборам. Налоговый орган доначислил налоги и штрафы
+            на сумму свыше 5 млн BYN. По итогам рассмотрения дела доначисления были полностью отменены.
+          </p>
+        </div>
+        
+        <div class="slide">
+          <img src="img/slide3.png" alt="Успешное дело №3" class="slide-image">
+          <h3 style="color: #2c3e50; font-size: 24px; margin: 20px 0;">Сопровождение сделки с иностранным партнёром</h3>
+          <p style="line-height: 1.6; max-width: 700px; margin: 0 auto; font-size: 17px; color: #555;">
+            Оказали полный комплекс юридических услуг белорусской производственной компании
+            при заключении контракта на поставку промышленного оборудования в одну из стран
+            Европейского союза. Сделка была успешно завершена в установленные сроки.
+          </p>
+        </div>
+        
+        <div class="slider-arrows">
+          <div class="arrow prev" title="Предыдущий слайд">‹</div>
+          <div class="arrow next" title="Следующий слайд">›</div>
+        </div>
+      </div>
+      
+      <div class="slider-dots">
+        <div class="dot active" title="Слайд 1"></div>
+        <div class="dot" title="Слайд 2"></div>
+        <div class="dot" title="Слайд 3"></div>
+      </div>
+      
+    </section>
+
+    <section class="specialization fade-in">
+      <h2 style="color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 15px; font-size: 32px; text-align: center;">
+        Наша специализация
+      </h2>
+      <p style="line-height: 1.7; font-size: 17px; text-align: center; color: #555;">
+        Юридическая фирма «ПравоКом» оказывает полный спектр правовых услуг для бизнеса и
+        частных клиентов на территории Республики Беларусь и за её пределами. Мы
+        специализируемся на сопровождении коммерческих сделок, разрешении экономических и
+        гражданских споров, защите интересов в судах всех инстанций, налоговом и
+        корпоративном праве, а также в вопросах международного частного права.
+      </p>
+    </section>
+
+    <section class="fade-in" style="padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%); border-radius: 10px; margin: 30px 0;">
+      <h2 style="color: #2c3e50; border-bottom: 3px solid #27ae60; padding-bottom: 15px; text-align: center; font-size: 32px;">
+        Наши преимущества
+      </h2>
+      <div class="advantages-grid">
+        <div class="advantage-item card-animation">
+          <img src="img/advantage1.png" alt="Преимущество 1" width="90" height="90" 
+               style="margin-bottom: 15px;">
+          <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Глубокое знание законодательства</p>
+        </div>
+        <div class="advantage-item card-animation">
+          <img src="img/advantage2.png" alt="Преимущество 2" width="90" height="90" 
+               style="margin-bottom: 15px;">
+          <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Комплексный подход</p>
+        </div>
+        <div class="advantage-item card-animation">
+          <img src="img/advantage3.png" alt="Преимущество 3" width="90" height="90" 
+               style="margin-bottom: 15px;">
+          <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Международная экспертиза</p>
+        </div>
+        <div class="advantage-item card-animation">
+          <img src="img/advantage4.png" alt="Преимущество 4" width="90" height="90" 
+               style="margin-bottom: 15px;">
+          <p style="font-size: 16px; font-weight: bold; color: #2c3e50;">Конфиденциальность</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 35px; text-align: center; margin-top: 40px;">
+    <div style="margin-bottom: 20px;">
+      <a href="index.html" style="color: #3498db; margin: 0 15px; font-size: 16px; font-weight: bold; text-decoration: none;">Главная</a>
+      <a href="about.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">О нас</a>
+      <a href="services.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">Услуги</a>
+      <a href="contacts.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">Контакты</a>
+    </div>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">Юридическая фирма «ПравоКом», УНП 123456789</p>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">220030, г. Минск, ул. Юридическая, д. 10, тел. +375 17 123-45-67</p>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">info@pravokom.by</p>
+  </footer>
+
+</body>
+</html>

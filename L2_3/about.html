@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>О нас — Юридическая фирма «ПравоКом»</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .about-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+        border-left: 5px solid #2c3e50;
+        padding: 30px;
+        margin: 25px 0;
+        border-radius: 10px;
+    }
+    
+    .team-grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 25px 0;
+    }
+    
+    .team-member {
+        width: 280px;
+        margin: 15px;
+        text-align: center;
+        padding: 25px;
+        background: white;
+        border: 2px solid #e0e0e0;
+        border-radius: 15px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .team-member:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        border-color: #3498db;
+    }
+    
+    .team-member::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+        transition: left 0.6s ease;
+    }
+    
+    .team-member:hover::before {
+        left: 100%;
+    }
+    
+    .timeline {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        border: 2px solid #e0e0e0;
+        margin: 20px 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .timeline li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    .timeline li::before {
+        content: '⚖️';
+        position: absolute;
+        left: 0;
+        font-size: 18px;
+    }
+
+    @keyframes photoGlow {
+        0% { box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); }
+        50% { box-shadow: 0 6px 20px rgba(52, 152, 219, 0.6); }
+        100% { box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); }
+    }
+    
+    .team-photo {
+        animation: photoGlow 3s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-logo" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);">
+    <a href="index.html" class="logo-link" style="text-decoration: none;">
+      <img src="img/logo.png" alt="Логотип ПравоКом" class="logo-img" 
+           style="border: 4px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
+      <h1 class="logo-text" style="color: white; text-shadow: 3px 3px 6px rgba(0,0,0,0.5);">
+        Юридическая фирма «ПравоКом»
+      </h1>
+    </a>
+  </header>
+
+  <nav class="main-nav" style="background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.3); padding: 25px;">
+    <a href="index.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">Главная</a>
+    <a href="about.html" class="nav-link" style="font-weight: bold; border: 2px solid #3498db; background: rgba(255,255,255,0.15);">О нас</a>
+    <a href="services.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">Услуги</a>
+    <a href="contacts.html" class="nav-link" style="font-weight: bold; border: 2px solid transparent;">Контакты</a>
+  </nav>
+
+  <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding: 25px;">
+    
+    <section class="about-section fade-in">
+      <h2 style="color: #2c3e50; border-bottom: 3px solid #2c3e50; padding-bottom: 15px; font-size: 32px; text-align: center;">
+        О нашей фирме
+      </h2>
+      
+      <div style="display: flex; justify-content: space-between; align-items: stretch; gap: 30px; margin: 25px 0;">
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+          <img src="img/firm_2.png" alt="Развитие фирмы" 
+               style="border: 3px solid #2c3e50; border-radius: 10px; box-shadow: 0 6px 15px rgba(0,0,0,0.2); width: 100%; height: 360px; object-fit: cover;">
+        </div>
+
+        <div class="timeline" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+          <h3 style="color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-bottom: 20px; font-size: 24px;">
+            История развития:
+          </h3>
+          <ul style="line-height: 1.7; margin: 0;">
+            <li style="margin-bottom: 15px;"><strong style="color: #2c3e50;">2010</strong> – основание «ПравоКом» и запуск первой практики арбитражного права.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #2c3e50;">2015</strong> – открытие филиалов в Гомеле, Витебске и Бресте.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #2c3e50;">2018</strong> – начало международного сотрудничества и работа с европейскими партнёрами.</li>
+            <li style="margin-bottom: 15px;"><strong style="color: #2c3e50;">2021</strong> – внедрение цифровых сервисов для удалённого консультирования.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="line-height: 1.7; font-size: 17px; text-align: center; color: #555; margin-top: 25px; padding: 0 20px;">
+        Сегодня «ПравоКом» – это команда из 25 специалистов, среди которых
+        арбитражные юристы, корпоративные советники и налоговые консультанты.
+        Мы оказываем поддержку на территории всей Беларуси и сопровождаем
+        сделки за рубежом. Наши клиенты ценят качество документации,
+        оперативность и индивидуальный подход к каждой задаче.
+      </p>
+    </section>
+
+    <section class="fade-in" style="padding: 30px; background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%); border-radius: 10px; margin: 25px 0;">
+      <h2 style="color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 15px; text-align: center; font-size: 32px;">
+        Наша команда
+      </h2>
+      
+      <div class="team-grid">
+        <div class="team-member card-animation">
+          <img src="img/team1.jpg" alt="Иванов Иван Иванович" width="160" height="160" 
+               class="team-photo" style="border-radius: 50%; border: 4px solid #2c3e50;">
+          <h3 style="color: #2c3e50; margin: 15px 0; font-size: 22px;">Иванов Иван Иванович</h3>
+          <p style="color: #666; font-style: italic; font-size: 16px;">Арбитражный юрист</p>
+          <p style="margin: 8px 0; color: #888; font-size: 14px;">12 лет стажа</p>
+          <div style="margin: 15px 0; background: #f8f9fa; padding: 12px; border-radius: 8px;">
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">📞 +375298264077</p>
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">✉️ i.ivanov@pravokom.by</p>
+          </div>
+        </div>
+
+        <div class="team-member card-animation">
+          <img src="img/team2.jpg" alt="Петрова Мария Сергеевна" width="160" height="160" 
+               class="team-photo" style="border-radius: 50%; border: 4px solid #2c3e50;">
+          <h3 style="color: #2c3e50; margin: 15px 0; font-size: 22px;">Петрова Мария Сергеевна</h3>
+          <p style="color: #666; font-style: italic; font-size: 16px;">Корпоративный юрист</p>
+          <p style="margin: 8px 0; color: #888; font-size: 14px;">9 лет стажа</p>
+          <div style="margin: 15px 0; background: #f8f9fa; padding: 12px; border-radius: 8px;">
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">📞 +375257127609</p>
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">✉️ m.petrova@pravokom.by</p>
+          </div>
+        </div>
+
+        <div class="team-member card-animation">
+          <img src="img/team3.jpg" alt="Смирнов Алексей Петрович" width="160" height="160" 
+               class="team-photo" style="border-radius: 50%; border: 4px solid #2c3e50;">
+          <h3 style="color: #2c3e50; margin: 15px 0; font-size: 22px;">Смирнов Алексей Петрович</h3>
+          <p style="color: #666; font-style: italic; font-size: 16px;">Налоговый консультант</p>
+          <p style="margin: 8px 0; color: #888; font-size: 14px;">11 лет стажа</p>
+          <div style="margin: 15px 0; background: #f8f9fa; padding: 12px; border-radius: 8px;">
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">📞 +375449135410</p>
+            <p style="margin: 6px 0; font-size: 15px; color: #2c3e50;">✉️ a.smirnov@pravokom.by</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="main-footer" style="background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); padding: 35px; text-align: center; margin-top: 40px;">
+    <div style="margin-bottom: 20px;">
+      <a href="index.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">Главная</a>
+      <a href="about.html" style="color: #3498db; margin: 0 15px; font-size: 16px; font-weight: bold; text-decoration: none;">О нас</a>
+      <a href="services.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">Услуги</a>
+      <a href="contacts.html" style="color: white; margin: 0 15px; font-size: 16px; text-decoration: none; transition: color 0.3s ease;">Контакты</a>
+    </div>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">Юридическая фирма «ПравоКом», УНП 123456789</p>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">220030, г. Минск, ул. Юридическая, д. 10, тел. +375 17 123-45-67</p>
+    <p style="margin: 12px 0; font-size: 15px; color: #ecf0f1;">info@pravokom.by</p>
+  </footer>
+
+</body>
+</html>
